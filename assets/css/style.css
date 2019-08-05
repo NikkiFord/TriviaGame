@@ -1,0 +1,38 @@
+body {
+    font-family: fantasy;
+    font-size: 25px;
+    background-image: url("../images/background2.jpg");
+    color: #fff;
+    padding-top: 25px;
+}
+
+#gameBox {
+    position: relative;
+    /*min-height: 500px;*/
+}
+
+#game {
+    position: relative;
+    z-index: 1;
+    padding: 25px;
+}
+
+#gameOverlay {
+    z-index: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    opacity: .75;
+    background-color: #000;
+    border-radius: 15px;
+}
+
+#timer {
+    margin-bottom: 25px;
+}
+
+#question {
+    margin-bottom: 15px;
+}

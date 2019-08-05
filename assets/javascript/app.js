@@ -1,5 +1,6 @@
+//global variables
 var correctAnswers = 0, wrongAnswers = 0, timeRemaining, questions, questionIndex = 0, timerID;
-
+//my question "database"
 var questions = [
     {
         text: "What is a group of cats called?",
@@ -48,10 +49,7 @@ var questions = [
     }
 
 ];
-
-$("#questionBox").hide();
-$("#result").hide();
-
+//populate the next question, and start countdown timer
 function nextQuestion() {
     // Get reference to the next question object.
     var question = questions[questionIndex];
@@ -68,14 +66,14 @@ function nextQuestion() {
         answersArray.push(answerButton);
     });
 
-    // Shuffle our array of buttons so the first one isn't always the right one.
+    // Shuffle our array of buttons so the first one isn't always the right one
     answersArray = shuffle(answersArray);
     $("#choices").empty();
     answersArray.forEach(function (answerButton) {
         $("#choices").append(answerButton);
     });
 
-
+    //start a 15 second timer for each question. When timer runs out, it counts it as a wrong answer
     var timer = duration = 15, seconds;
     $("#timer").html("<br>");
     timerID = setInterval(function () {
@@ -93,7 +91,8 @@ function nextQuestion() {
     }, 1000);
 }
 
-
+//creates a "start button" to begin game
+//also starts the game over when they are finished
 $("#start").on("click", function () {
     $("#start").hide();
     correctAnswers = 0;
@@ -104,6 +103,8 @@ $("#start").on("click", function () {
     nextQuestion();
 });
 
+//function that it compares their answer to the right answer, and tells them if they got it right or wrong
+//if they get it wrong, it tells them the correct answer
 function checkAnswer(answerIndex) {
     if (answerIndex === 0) {
         $("#result").css('color', '#0f0');
@@ -117,7 +118,8 @@ function checkAnswer(answerIndex) {
     showResult();
 
 }
-
+//function that shows them their result for 3 seconds, then starts the next question
+//shows them their results of wrong or right answers at the end
 function showResult() {
     $("#questionBox").hide();
     $("#result").show();
@@ -140,7 +142,7 @@ function showResult() {
     }, 3000);
 
 }
-
+//googled this and found this code on stackoverflow
 function shuffle(array) {
     var currentIndex = array.length, temporaryValue, randomIndex;
 
